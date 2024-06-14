@@ -39,6 +39,8 @@ class Group(models.Model):
 
 
 class GroupMember(models.Model):
+    DoesNotExist = None
+    objects = None
     group = models.ForeignKey(Group, related_name='memberships', on_delete=models.CASCADE)
     user = models.ForeignKey(User, related_name='user_groups', on_delete=models.CASCADE)
 
