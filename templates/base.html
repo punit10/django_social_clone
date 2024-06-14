@@ -37,13 +37,13 @@
       <ul class="navbar-nav navbar-right me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
         <li>
-          <a class="nav-link active" href="#">Post</a>
+          <a class="nav-link active" href="{% url 'posts:create' %}">Post</a>
         </li>
         <li>
-          <a class="nav-link active" href="#">Groups</a>
+          <a class="nav-link active" href="{% url 'groups:all' %}">Groups</a>
         </li>
         <li>
-          <a class="nav-link active" href="#">Create Group</a>
+          <a class="nav-link active" href="{% url 'groups:create' %}">Create Group</a>
         </li>
         <li>
            <form action="{% url 'accounts:logout' %}" method="POST">
@@ -53,7 +53,7 @@
        </li>
         {% else %}
         <li>
-          <a class="nav-link active" href="#">Groups</a>
+          <a class="nav-link active" href="{% url 'groups:all' %}">Groups</a>
         </li>
         <li>
           <a class="nav-link active" href="{% url 'accounts:login' %}">Login</a>
