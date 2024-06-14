@@ -1,11 +1,11 @@
 from django.db import models
+from django.conf import settings
 from django.urls import reverse
-from django.core import settings
+
+# pip install misaka
 import misaka
 
-from group.models import Group
-# Create your models here.
-# POSTS Model.py
+from groups.models import Group
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -26,13 +26,16 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('post:single', kwargs={'username': self.user.username,
-                       'pk': self.pk})
+        return reverse(
+            "posts:single",
+            kwargs={
+                "username": self.user.username,
+                "pk": self.pk
+            }
+        )
 
-    def Meta:
-        ordering = ['-created_at']
-        unique_together = ['user', 'message']
-
-
+    class Meta:
+        ordering = ["-created_at"]
+        unique_together = ["user", "message"]
 
 
