@@ -1,0 +1,78 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaders Connect</title>
+
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'leaders_connect/css/master.css'%}">
+
+</head>
+<body>
+<div class="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mynav" id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Leaders Connect</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <a class="nav-link active" href="#">Post Lists</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="{% url 'admin:index' %}">Admin</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right me-auto mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <li>
+          <a class="nav-link active" href="#">Post</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="#">Groups</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="#">Create Group</a>
+        </li>
+        <li>
+           <form action="{% url 'accounts:logout' %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-info">Logout</button>
+            </form>
+       </li>
+        {% else %}
+        <li>
+          <a class="nav-link active" href="#">Groups</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="{% url 'accounts:login' %}">Login</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="{% url 'accounts:signup' %}">Signup</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+<div class="container mycontainer">
+{% block content %}
+
+
+{% endblock %}
+</div>
+</body>
+</html>
