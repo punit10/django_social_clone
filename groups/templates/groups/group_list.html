@@ -3,16 +3,16 @@
 {% block pregroup %}
 <div class="col-md-4">
     <div class="content">
+        <h3>Groups</h3>
+        <h5>Welcome to the groups page!</h5>
         {% if user.is_authenticated %}
-            <h3>Welcome Back!</h3>
-            <a href="{% url 'post:for_user' username=user.username %}">
+            <h3>Welcome Back!
+            <a href="{% url 'posts:for_user' username=user.username %}">
                 @{{ user.username }}
-            </a>
+            </a></h3>
 
         {% endif %}
 
-        <h3>Welcome Back!</h3>
-        <h5>Welcome to the groups page!</h5>
     </div>
 
      {% if user.is_authenticated %}
@@ -24,8 +24,8 @@
 </div>
 {% endblock %}
 
-# Block for content
-{% block content %}
+# Block for group-content
+{% block group_content %}
 <div class="col-md-8">
     {% for group in object_list %}
         <a class="group-list-item" href="{% url 'groups:single' slug=group.slug %}">
@@ -40,7 +40,7 @@
 
                     <div class="col-md-4">
                     <span class="badge">{{ group.posts.count }}</span>
-                        member{{ group.posts.count|pluralize }}
+                        post{{ group.posts.count|pluralize }}
                     </div>
                 </div>
             </div>
