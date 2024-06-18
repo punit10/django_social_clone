@@ -26,24 +26,19 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">Leaders Connect</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li>
-          <a class="nav-link active" href="#">Post Lists</a>
-        </li>
-        <li>
-          <a class="nav-link active" href="{% url 'admin:index' %}">Admin</a>
-        </li>
-      </ul>
       <ul class="navbar-nav navbar-right me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
         <li>
-          <a class="nav-link active" href="#">Post</a>
+          <a class="nav-link active" href="{% url 'posts:all' %}">Posts</a>
         </li>
         <li>
-          <a class="nav-link active" href="#">Groups</a>
+          <a class="nav-link active" href="{% url 'posts:create' %}">Create Post</a>
         </li>
         <li>
-          <a class="nav-link active" href="#">Create Group</a>
+          <a class="nav-link active" href="{% url 'groups:all' %}">Groups</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="{% url 'groups:create' %}">Create Group</a>
         </li>
         <li>
            <form action="{% url 'accounts:logout' %}" method="POST">
@@ -53,7 +48,10 @@
        </li>
         {% else %}
         <li>
-          <a class="nav-link active" href="#">Groups</a>
+          <a class="nav-link active" href="{% url 'posts:all' %}">Posts</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="{% url 'groups:all' %}">Groups</a>
         </li>
         <li>
           <a class="nav-link active" href="{% url 'accounts:login' %}">Login</a>
@@ -62,6 +60,11 @@
           <a class="nav-link active" href="{% url 'accounts:signup' %}">Signup</a>
         </li>
         {% endif %}
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <a class="nav-link active" href="{% url 'admin:index' %}">Admin</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -74,5 +77,17 @@
 
 {% endblock %}
 </div>
+
+<!--FOOTER NAV-->
+<nav class="navbar fixed-bottom navbar-dark bg-dark navbar-expand-lg bg-body-tertiary" id="navbar">
+  <div class="container">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li>
+          <a class="nav-link active" href="">© Leadership Connect</a>
+        </li>
+      </ul>
+  </div>
+</nav>
+
 </body>
 </html>
