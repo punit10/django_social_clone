@@ -1,0 +1,6 @@
+django-bootstrap3
+humanize
+wheel
+python-dateutil
+pillow
+Faker
