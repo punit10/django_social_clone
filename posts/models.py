@@ -3,8 +3,6 @@ from django.conf import settings
 from django.urls import reverse
 
 # pip install misaka
-import misaka
-
 from groups.models import Group
 
 from django.contrib.auth import get_user_model

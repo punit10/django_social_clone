@@ -4,3 +4,4 @@ wheel
 python-dateutil
 pillow
 Faker
+bootstrap4
