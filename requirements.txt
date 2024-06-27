@@ -6,3 +6,4 @@ pillow
 Faker
 bootstrap4
 bootstrap3
+django-braces
